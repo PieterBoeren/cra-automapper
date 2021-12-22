@@ -1,6 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { mapper } from './models/automapper';
+import { TestViewModel } from './models/models.vm';
+import { TestDto } from './models/models.dto';
+
+// Example data from https://geojson.org/
+const geoJson: GeoJSON.GeoJSON = {
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [125.6, 10.1]
+  },
+  "properties": {
+    "name": "Dinagat Islands"
+  }
+};
+
+mapper.map({id:1, someGeometry: geoJson}, TestViewModel, TestDto);
 
 function App() {
   return (
