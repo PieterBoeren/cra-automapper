@@ -4,9 +4,10 @@ import './App.css';
 import { mapper } from './models/automapper';
 import { TestViewModel } from './models/models.vm';
 import { TestDto } from './models/models.dto';
+import { GeoJSONWithCRS } from './types';
 
 // Example data from https://geojson.org/
-const geoJson: GeoJSON.GeoJSON = {
+const geoJson: GeoJSONWithCRS = {
   "type": "Feature",
   "geometry": {
     "type": "Point",
@@ -17,7 +18,9 @@ const geoJson: GeoJSON.GeoJSON = {
   }
 };
 
-mapper.map({id:1, someGeometry: geoJson}, TestViewModel, TestDto);
+const mappedObject = mapper.map( {id:1, someGeometry: geoJson}, TestViewModel, TestDto);
+
+console.log(mappedObject);
 
 function App() {
   return (

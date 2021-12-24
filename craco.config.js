@@ -25,14 +25,16 @@ module.exports = {
             console.log('adding ts-loader');
 
             const tsLoader = {
-                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                test: /\.(ts|tsx)$/,
                 include: paths.appSrc,
                 loader: require.resolve('ts-loader'),
-                options: { transpileOnly: true, 
-                    getCustomTransformers: (program) => ({
-                        before: [automapperTransformerPlugin(program).before],
-                      }), },
-            };
+                options: { 
+                            transpileOnly: true,
+                            getCustomTransformers: (program) => ({
+                                before: [automapperTransformerPlugin(program).before],
+                            }), 
+                        },
+                    };
 
             const { isAdded: tsLoaderIsAdded } = addAfterLoader(webpackConfig, loaderByName('url-loader'), tsLoader);
             if (!tsLoaderIsAdded) throwError('failed to add ts-loader');

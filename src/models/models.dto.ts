@@ -1,6 +1,8 @@
+import { GeoJSONWithCRS } from "../types";
+
 class TestDto {
     public id!: number;
-    public someGeometry!: GeoJSON.GeoJSON;
+    public someGeometry!: GeoJSONWithCRS;
 }
 
 export { TestDto };
