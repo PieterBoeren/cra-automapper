@@ -1,7 +1,7 @@
 const { addAfterLoader, removeLoaders, loaderByName, getLoaders, throwUnexpectedConfigError } = require('@craco/craco');
 // Without the ".default" the plugin doesn't work
 const automapperTransformerPlugin =
-  require("@automapper/classes/experimental/transformer-plugin").default;
+  require("@automapper/classes/transformer-plugin").default;
 
 const throwError = (message) =>
     throwUnexpectedConfigError({

@@ -1,12 +1,11 @@
 import { classes } from "@automapper/classes";
-import { createMapper } from "@automapper/core";
+import { addProfile, createMapper } from "@automapper/core";
 import { testProfile } from "../models.profiles";
 
 const mapper = createMapper({
-  name: "test",
-  pluginInitializer: classes,
+  strategyInitializer: classes(),
 });
 
-mapper.addProfile(testProfile);
+addProfile(mapper, testProfile);
 
 export { mapper };

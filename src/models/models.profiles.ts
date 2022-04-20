@@ -1,16 +1,16 @@
-import { Converter, convertUsing, MappingProfile } from "@automapper/core";
+import { Converter, convertUsing, createMap, forMember, MappingProfile } from "@automapper/core";
 import { Proj4GeoJSONFeature } from "proj4leaflet";
 import { TestDto } from "./models.dto";
 import { TestViewModel } from "./models.vm";
 import { GeoJSONWithCRS } from "../types";
 
 const testProfile: MappingProfile = (mapper) => {
-  mapper.createMap(TestDto, TestViewModel)
-  .forMember(
+  createMap(mapper, TestDto, TestViewModel,
+  forMember(
     (destination) => destination.someGeometry,
     //mapFrom((source) => source.someGeometry)
     convertUsing(geoJsonConverter, (source) => source.someGeometry)
-  );
+  ));
   ;
 };
 
